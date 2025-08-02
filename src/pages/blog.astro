@@ -1,0 +1,181 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BlogCard from '../components/BlogCard.astro';
+
+// Sample blog posts data
+const posts = [
+  {
+    title: "Top 10 Smart Home Devices for 2024",
+    description: "Discover the latest smart home innovations that will transform your living space. From voice assistants to automated lighting systems.",
+    image: "https://images.pexels.com/photos/4112236/pexels-photo-4112236.jpeg?auto=compress&cs=tinysrgb&w=800",
+    url: "/coming-soon?category=Smart Home&title=Top 10 Smart Home Devices for 2024",
+    category: "Smart Home",
+    date: "2024-01-15",
+    readingTime: 8
+  },
+  {
+    title: "Best Budget Laptops Under $500",
+    description: "Find the perfect affordable laptop without compromising on performance. Our comprehensive review of budget-friendly options.",
+    image: "https://images.pexels.com/photos/812264/pexels-photo-812264.jpeg?auto=compress&cs=tinysrgb&w=800",
+    url: "/coming-soon?category=Electronics&title=Best Budget Laptops Under $500",
+    category: "Electronics",
+    date: "2024-01-12",
+    readingTime: 6
+  },
+  {
+    title: "Kitchen Gadgets That Actually Work",
+    description: "Cut through the marketing hype and discover kitchen tools that genuinely make cooking easier and more enjoyable.",
+    image: "https://images.pexels.com/photos/1638280/pexels-photo-1638280.jpeg?auto=compress&cs=tinysrgb&w=800",
+    url: "/coming-soon?category=Kitchen&title=Kitchen Gadgets That Actually Work",
+    category: "Kitchen",
+    date: "2024-01-10",
+    readingTime: 5
+  },
+  {
+    title: "Fitness Tracker Comparison 2024",
+    description: "Compare the latest fitness trackers from Apple, Fitbit, and Samsung. Find the perfect device for your health goals.",
+    image: "https://images.pexels.com/photos/4056723/pexels-photo-4056723.jpeg?auto=compress&cs=tinysrgb&w=800",
+    url: "/coming-soon?category=Health & Fitness&title=Fitness Tracker Comparison 2024",
+    category: "Health & Fitness",
+    date: "2024-01-08",
+    readingTime: 7
+  },
+  {
+    title: "Gaming Headsets Under $100",
+    description: "Immerse yourself in gaming without breaking the bank. Our top picks for affordable gaming headsets with great sound quality.",
+    image: "https://images.pexels.com/photos/3945683/pexels-photo-3945683.jpeg?auto=compress&cs=tinysrgb&w=800",
+    url: "/coming-soon?category=Gaming&title=Gaming Headsets Under $100",
+    category: "Gaming",
+    date: "2024-01-05",
+    readingTime: 6
+  },
+  {
+    title: "Kitchen Gadgets That Actually Work",
+    description: "Cut through the marketing hype and discover kitchen tools that genuinely make cooking easier and more enjoyable.",
+    image: "https://images.pexels.com/photos/324028/pexels-photo-324028.jpeg?auto=compress&cs=tinysrgb&w=800",
+    url: "/coming-soon?category=Kitchen&title=Kitchen Gadgets That Actually Work",
+    category: "Kitchen",
+    date: "2024-01-03",
+    readingTime: 5
+  }
+];
+
+const categories = ["All", "Electronics", "Smart Home", "Kitchen", "Health & Fitness", "Gaming", "Beauty"];
+---
+
+<BaseLayout
+  title="Blog - Latest Product Reviews & Buying Guides | Blicksel Picks"
+  description="Read the latest product reviews, buying guides, and Amazon deal alerts. Stay informed with expert recommendations and honest reviews."
+>
+  <Header />
+  
+  <main class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Product Reviews & Buying Guides
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            Discover honest reviews, detailed comparisons, and expert recommendations 
+            to help you make informed purchasing decisions on Amazon.
+          </p>
+        </div>
+        
+        <!-- Category Filter -->
+        <div class="flex flex-wrap justify-center gap-2 mb-8">
+          {categories.map(category => (
+            <button 
+              class="category-btn px-4 py-2 rounded-full text-sm font-medium transition-colors hover:bg-primary-100 hover:text-primary-700"
+              data-category={category.toLowerCase()}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Blog Posts Grid -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid">
+          {posts.map(post => (
+            <BlogCard {...post} />
+          ))}
+        </div>
+        
+        <!-- Load More Button -->
+        <div class="text-center mt-12">
+          <button class="btn-primary text-lg px-8 py-3" id="load-more">
+            Load More Posts
+          </button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- AdSense Placeholder -->
+    <div class="py-8 bg-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gray-200 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+          <p class="text-gray-500">Google AdSense Advertisement Placeholder</p>
+          <p class="text-sm text-gray-400 mt-2">728x90 Leaderboard</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+<style>
+  .category-btn {
+    background-color: #f3f4f6;
+    color: #6b7280;
+  }
+  
+  .category-btn.active {
+    background-color: #3b82f6;
+    color: white;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const postsGrid = document.getElementById('posts-grid');
+    const loadMoreBtn = document.getElementById('load-more');
+    
+    // Set initial active state
+    categoryBtns[0]?.classList.add('active');
+    
+    // Category filtering
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active state
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const category = btn.dataset.category;
+        const posts = postsGrid?.querySelectorAll('article');
+        
+        posts?.forEach(post => {
+          if (category === 'all') {
+            post.style.display = 'block';
+          } else {
+            const postCategory = post.querySelector('.inline-flex')?.textContent?.toLowerCase();
+            post.style.display = postCategory?.includes(category) ? 'block' : 'none';
+          }
+        });
+      });
+    });
+    
+    // Load more functionality (placeholder)
+    loadMoreBtn?.addEventListener('click', () => {
+      alert('Loading more posts... (This would fetch more posts from your CMS in a real implementation)');
+    });
+  });
+</script>

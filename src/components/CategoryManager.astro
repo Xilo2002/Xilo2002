@@ -1,0 +1,42 @@
+---
+// Dynamic category management component
+import { getCollection } from 'astro:content';
+
+export interface Props {
+  showAll?: boolean;
+  featured?: boolean;
+  limit?: number;
+}
+
+const { showAll = false, featured = false, limit } = Astro.props;
+
+// Get all categories from CMS
+let categories = await getCollection('categories');
+
+// Filter categories based on props
+if (featured) {
+  categories = categories.filter(cat => cat.data.featured);
+}
+
+// Sort categories by product count (descending) or alphabetically
+categories = categories.sort((a, b) => {
+  if (a.data.productCount !== b.data.productCount) {
+    return b.data.productCount - a.data.productCount;
+  }
+  return a.data.title.localeCompare(b.data.title);
+});
+
+// Apply limit if specified
+if (limit && !showAll) {
+  categories = categories.slice(0, limit);
+}
+
+// Export categories for use in other components
+export const allCategories = categories;
+---
+
+<!-- This component doesn't render anything, it's just for data management -->
+<script define:vars={{ categories }}>
+  // Make categories available globally if needed
+  window.siteCategories = categories;
+</script>

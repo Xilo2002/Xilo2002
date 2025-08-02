@@ -1,0 +1,80 @@
+{
+  "header": [
+    {
+      "name": "Home",
+      "url": "/",
+      "order": 1
+    },
+    {
+      "name": "Blog",
+      "url": "/blog",
+      "order": 2
+    },
+    {
+      "name": "Categories",
+      "url": "/categories",
+      "order": 3
+    },
+    {
+      "name": "Reviews",
+      "url": "/reviews",
+      "order": 4
+    },
+    {
+      "name": "About",
+      "url": "/about",
+      "order": 5
+    },
+    {
+      "name": "Contact",
+      "url": "/contact",
+      "order": 6
+    }
+  ],
+  "footer": {
+    "quickLinks": [
+      {
+        "name": "Home",
+        "url": "/"
+      },
+      {
+        "name": "Blog",
+        "url": "/blog"
+      },
+      {
+        "name": "Categories",
+        "url": "/categories"
+      },
+      {
+        "name": "Reviews",
+        "url": "/reviews"
+      },
+      {
+        "name": "About",
+        "url": "/about"
+      },
+      {
+        "name": "Contact",
+        "url": "/contact"
+      }
+    ],
+    "legal": [
+      {
+        "name": "Privacy Policy",
+        "url": "/privacy-policy"
+      },
+      {
+        "name": "Affiliate Disclosure",
+        "url": "/affiliate-disclosure"
+      },
+      {
+        "name": "Terms of Service",
+        "url": "/terms-of-service"
+      },
+      {
+        "name": "Sitemap",
+        "url": "/sitemap"
+      }
+    ]
+  }
+}

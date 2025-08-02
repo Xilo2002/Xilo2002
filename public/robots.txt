@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://blicksel-picks.netlify.app/sitemap-index.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /.netlify/
+
+# Allow search engines to crawl important pages
+Allow: /
+Allow: /blog/
+Allow: /categories/
+Allow: /about/
+Allow: /contact/
+Allow: /privacy-policy/
+Allow: /affiliate-disclosure/

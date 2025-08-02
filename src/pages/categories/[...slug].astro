@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import DynamicIcon from '../../components/DynamicIcon.astro';
+
+export async function getStaticPaths() {
+  const categories = await getCollection('categories');
+  return categories.map((category) => ({
+    params: { slug: category.data.slug },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+const { Content } = await category.render();
+---
+
+<BaseLayout
+  title={`${category.data.title} - Product Reviews & Buying Guides | Blicksel Picks`}
+  description={category.data.description}
+>
+  <Header />
+  
+  <main class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="text-center">
+          <div class="flex justify-center mb-6">
+            <div class={`w-20 h-20 ${category.data.colorClass.replace('text-', 'bg-').replace('-800', '-100')} rounded-2xl flex items-center justify-center`}>
+              <DynamicIcon name={category.data.icon} class="w-10 h-10 text-gray-700" />
+            </div>
+          </div>
+          <h1 class="text-5xl font-bold text-gray-900 mb-6">
+            {category.data.title}
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            {category.data.description}
+          </p>
+          <div class="flex justify-center">
+            <span class={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium ${category.data.colorClass}`}>
+              {category.data.productCount} products reviewed
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Content -->
+    <section class="py-20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-lg shadow-sm p-8 md:p-12">
+          <div class="prose prose-lg max-w-none">
+            <Content />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</BaseLayout>

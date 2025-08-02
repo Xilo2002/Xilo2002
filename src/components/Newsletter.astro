@@ -1,0 +1,66 @@
+---
+---
+
+<section class="bg-gradient-to-r from-primary-600 to-accent-600 text-white py-12">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-bold mb-4">Stay Updated with the Best Deals</h2>
+    <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+      Get the latest product reviews, Amazon deals, and buying guides delivered straight to your inbox. 
+      No spam, just valuable content.
+    </p>
+    
+    <form class="max-w-md mx-auto" id="newsletter-form">
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          required
+          class="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+          id="newsletter-email"
+        >
+        <button
+          type="submit"
+          class="bg-white text-primary-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors whitespace-nowrap"
+        >
+          Subscribe
+        </button>
+      </div>
+      <p class="text-sm text-primary-100 mt-3">
+        We respect your privacy. Unsubscribe at any time.
+      </p>
+    </form>
+    
+    <div class="flex justify-center items-center mt-8 space-x-8 opacity-75">
+      <div class="text-center">
+        <div class="text-2xl font-bold text-white">10K+</div>
+        <div class="text-sm">Subscribers</div>
+      </div>
+      <div class="text-center">
+        <div class="text-2xl font-bold text-white">500+</div>
+        <div class="text-sm">Reviews</div>
+      </div>
+      <div class="text-center">
+        <div class="text-2xl font-bold text-white">50+</div>
+        <div class="text-sm">Categories</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('newsletter-form');
+    const emailInput = document.getElementById('newsletter-email');
+    
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = emailInput.value;
+      
+      // Here you would typically send the email to your newsletter service
+      // For now, we'll just show a success message
+      alert('Thank you for subscribing! We\'ll be in touch soon.');
+      emailInput.value = '';
+    });
+  });
+</script>

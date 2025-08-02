@@ -1,0 +1,94 @@
+---
+export interface Props {
+  productUrl: string;
+  productName?: string;
+  price?: string;
+  className?: string;
+  size?: 'small' | 'medium' | 'large';
+  showIcon?: boolean;
+}
+
+const { 
+  productUrl, 
+  productName = "Buy on Amazon", 
+  price, 
+  className = "", 
+  size = "medium",
+  showIcon = true 
+} = Astro.props;
+
+// Add affiliate tag to Amazon URLs
+const affiliateUrl = productUrl.includes('amazon.com') 
+  ? `${productUrl}${productUrl.includes('?') ? '&' : '?'}tag=blickselp-20`
+  : productUrl;
+
+// Size classes
+const sizeClasses = {
+  small: 'px-4 py-2 text-sm',
+  medium: 'px-6 py-3 text-base',
+  large: 'px-8 py-4 text-lg'
+};
+---
+
+<div class={`amazon-product-cta ${className}`}>
+  <a 
+    href={affiliateUrl} 
+    target="_blank" 
+    rel="nofollow noopener sponsored"
+    class={`amazon-btn group ${sizeClasses[size]}`}
+    aria-label={`View ${productName} on Amazon`}
+  >
+    {showIcon && (
+      <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 8.206 3.183 13.697 3.183 4.674 0 8.955-1.004 12.844-3.008.187-.093.348-.053.484.124.045.062.009.152-.1.205-4.33 2.395-9.037 3.589-14.123 3.589-5.849 0-11.312-1.596-15.612-4.787-.121-.09-.16-.18-.538-.284zm1.757-2.03c-.138-.32.024-.73.36-.91 7.365-4.05 19.35-4.05 26.716 0 .335.18.497.59.36.91-.046.108-.194.126-.33.04-6.698-4.244-17.134-4.244-23.832 0-.136.086-.284.068-.33-.04z"/>
+      </svg>
+    )}
+    <span>{productName}</span>
+    {price && <span class="text-sm opacity-90">({price})</span>}
+    <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+    </svg>
+  </a>
+  
+  {price && (
+    <div class="text-sm text-gray-600 mt-2 text-center">
+      <span class="text-accent-600 font-semibold">{price}</span>
+      <span class="block text-xs">Price may vary</span>
+    </div>
+  )}
+</div>
+
+<style>
+  .amazon-product-cta {
+    text-align: center;
+    margin: 1rem 0;
+  }
+  
+  .amazon-btn {
+    background: linear-gradient(135deg, #FF9900 0%, #FF7700 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(255, 153, 0, 0.2);
+    min-width: 160px;
+  }
+  
+  .amazon-btn:hover {
+    background: linear-gradient(135deg, #FF7700 0%, #FF5500 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(255, 153, 0, 0.3);
+    color: white;
+    text-decoration: none;
+  }
+  
+  .amazon-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(255, 153, 0, 0.2);
+  }
+</style>

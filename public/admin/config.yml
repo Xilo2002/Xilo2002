@@ -1,0 +1,243 @@
+backend:
+  name: github
+  repo: Blicksel/Novo
+  branch: main
+  app_id: Ov23lisxNiRKk2DXBjXt
+  auth_scope: repo
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+# Enable editorial workflow (draft, review, ready)
+publish_mode: editorial_workflow
+
+# Site settings
+site_url: https://picks.blicksel.com
+display_url: https://picks.blicksel.com
+logo_url: https://picks.blicksel.com/images/logo.png
+
+collections:
+  # Site Settings
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General Settings"
+        name: "general"
+        file: "src/content/settings/general.yml"
+        fields:
+          - { label: "Site Title", name: "title", widget: "string" }
+          - { label: "Site Description", name: "description", widget: "text" }
+          - { label: "Site URL", name: "url", widget: "string" }
+          - { label: "Contact Email", name: "email", widget: "string" }
+          - label: "Social Media Links"
+            name: "social"
+            widget: "object"
+            fields:
+              - { label: "Facebook", name: "facebook", widget: "string", required: false }
+              - { label: "Twitter", name: "twitter", widget: "string", required: false }
+              - { label: "Instagram", name: "instagram", widget: "string", required: false }
+              
+  # Navigation
+  - name: "navigation"
+    label: "Navigation"
+    files:
+      - label: "Main Navigation"
+        name: "main"
+        file: "src/content/navigation/main.json"
+        fields:
+          - label: "Header Links"
+            name: "header"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Order", name: "order", widget: "number" }
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - label: "Quick Links"
+                name: "quickLinks"
+                widget: "list"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+              - label: "Legal Links"
+                name: "legal"
+                widget: "list"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+                  
+  # Contact Information
+  - name: "contact"
+    label: "Contact Information"
+    files:
+      - label: "Contact Details"
+        name: "main"
+        file: "src/content/contact/main.json"
+        fields:
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string", required: false }
+          - { label: "Address", name: "address", widget: "text", required: false }
+          - label: "Social Media"
+            name: "socialMedia"
+            widget: "object"
+            fields:
+              - { label: "Facebook", name: "facebook", widget: "string", required: false }
+              - { label: "Twitter", name: "twitter", widget: "string", required: false }
+              - { label: "Instagram", name: "instagram", widget: "string", required: false }
+          - label: "Contact Form Settings"
+            name: "contactForm"
+            widget: "object"
+            fields:
+              - { label: "Enabled", name: "enabled", widget: "boolean" }
+              - { label: "Send To Email", name: "emailTo", widget: "string" }
+              - { label: "Subject Options", name: "subjects", widget: "list" }
+
+  # Blog posts
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Category", name: "category", widget: "relation", collection: "categories", search_fields: ["title"], value_field: "title", display_fields: ["title"] }
+      - { label: "Tags", name: "tags", widget: "list", default: [] }
+      - { label: "Author", name: "author", widget: "string", default: "Blicksel Picks Team" }
+      - { label: "Publish Date", name: "publishDate", widget: "datetime" }
+      - { label: "Featured Post", name: "featured", widget: "boolean", default: false }
+      - { label: "Amazon Button URL", name: "amazon_button_url", widget: "string", required: false, hint: "Optional: Add Amazon affiliate link to show 'Buy on Amazon' button" }
+      - { label: "Amazon Button Text", name: "amazon_button_text", widget: "string", default: "Buy on Amazon", required: false, hint: "Customize button text (default: Buy on Amazon)" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      
+  # Product Reviews
+  - name: "reviews"
+    label: "Product Reviews"
+    folder: "src/content/reviews"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Product Name", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Product Image", name: "image", widget: "image" }
+      - { label: "Category", name: "category", widget: "relation", collection: "categories", search_fields: ["title"], value_field: "title", display_fields: ["title"] }
+      - { label: "Rating", name: "rating", widget: "number", min: 1, max: 5, step: 0.1 }
+      - { label: "Price", name: "price", widget: "string" }
+      - { label: "Amazon URL", name: "amazonUrl", widget: "string" }
+      - { label: "Pros", name: "pros", widget: "list" }
+      - { label: "Cons", name: "cons", widget: "list" }
+      - { label: "Best For", name: "bestFor", widget: "string" }
+      - { label: "Author", name: "author", widget: "string", default: "Blicksel Picks Team" }
+      - { label: "Publish Date", name: "publishDate", widget: "datetime" }
+      - { label: "Amazon Button URL", name: "amazon_button_url", widget: "string", required: false, hint: "Optional: Add Amazon affiliate link to show 'Buy on Amazon' button" }
+      - { label: "Amazon Button Text", name: "amazon_button_text", widget: "string", default: "Buy on Amazon", required: false, hint: "Customize button text (default: Buy on Amazon)" }
+      - { label: "Review Content", name: "body", widget: "markdown" }
+      
+  # Categories
+  - name: "categories"
+    label: "Categories"
+    folder: "src/content/categories"
+    create: true
+    slug: "{{fields.slug}}"
+    fields:
+      - { label: "Category Name", name: "title", widget: "string" }
+      - { label: "URL Slug", name: "slug", widget: "string", pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', 'Must be lowercase letters, numbers, and hyphens only'], hint: "URL-friendly version (e.g., health-fitness)" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Icon", name: "icon", widget: "select", options: ["smartphone", "laptop", "home", "garden", "utensils", "chef", "heart", "dumbbell", "palette", "sparkles", "trophy", "gamepad", "star", "lightning"] }
+      - { label: "Color Class", name: "colorClass", widget: "string", default: "bg-blue-100 text-blue-800" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Product Count", name: "productCount", widget: "number", default: 0 }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # Homepage Content
+  - name: "homepage"
+    label: "Homepage"
+    files:
+      - label: "Homepage Content"
+        name: "main"
+        file: "src/content/homepage/main.json"
+        fields:
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - label: "Primary CTA"
+                name: "primaryCta"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+              - label: "Secondary CTA"
+                name: "secondaryCta"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+          
+          - label: "Featured Product"
+            name: "featuredProduct"
+            widget: "object"
+            fields:
+              - { label: "Badge Text", name: "badge", widget: "string" }
+              - { label: "Badge Icon", name: "badgeIcon", widget: "select", options: ["lightning", "star", "trophy", "heart", "sparkles"] }
+              - { label: "Product Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "CTA Text", name: "ctaText", widget: "string" }
+              - { label: "CTA URL", name: "ctaUrl", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+          
+          - label: "Categories"
+            name: "categories"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Icon", name: "icon", widget: "select", options: ["smartphone", "laptop", "home", "garden", "utensils", "chef", "heart", "dumbbell", "palette", "sparkles", "trophy", "gamepad"] }
+              - { label: "Product Count", name: "count", widget: "number" }
+              - { label: "Color Class", name: "colorClass", widget: "string", default: "bg-blue-100 text-blue-800" }
+              - { label: "Description", name: "description", widget: "text" }
+          
+          - label: "Why Choose Us"
+            name: "whyChooseUs"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon", name: "icon", widget: "select", options: ["heart", "lightning", "trophy", "star", "chart", "users"] }
+              - { label: "Color Class", name: "colorClass", widget: "string", default: "bg-primary-100" }
+          
+          - label: "Stats"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Number", name: "number", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Icon", name: "icon", widget: "select", options: ["star", "chart", "users", "trending", "trophy", "heart"] }
+      
+  # Pages
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "src/content/pages/about.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Body", name: "body", widget: "markdown" }
+          
+      - label: "Contact Page"
+        name: "contact"
+        file: "src/content/pages/contact.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Body", name: "body", widget: "markdown" }
+          
+  # Amazon Affiliate Settings remain in separate file for security

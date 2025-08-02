@@ -1,0 +1,82 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  noIndex?: boolean;
+  canonical?: string;
+}
+
+const { 
+  title, 
+  description = "Discover the best Amazon products with Blicksel Picks - your trusted source for honest reviews and recommendations.",
+  image = "/images/og-default.jpg",
+  noIndex = false,
+  canonical
+} = Astro.props;
+
+const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="generator" content={Astro.generator}>
+  
+  <!-- SEO Meta Tags -->
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonicalURL}>
+  {noIndex && <meta name="robots" content="noindex, nofollow">}
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:site_name" content="Blicksel Picks">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={ogImage}>
+  
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Blicksel Picks",
+      "description": "Discover the best Amazon products with honest reviews and recommendations",
+      "url": "https://blicksel-picks.netlify.app",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://blicksel-picks.netlify.app/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+  
+  <!-- Google AdSense Placeholder -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script> -->
+  
+  <ViewTransitions />
+</head>
+<body>
+  <div id="app">
+    <slot />
+  </div>
+  
+  <style>
+    @import '../styles/global.css';
+  </style>
+</body>
+</html>

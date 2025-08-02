@@ -1,0 +1,115 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply text-gray-900 bg-white;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-accent {
+    @apply bg-accent-600 hover:bg-accent-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply text-gray-900 bg-white;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-accent {
+    @apply bg-accent-600 hover:bg-accent-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200;
+  }
+}
+
+/* Amazon affiliate button styles */
+.amazon-btn {
+  background: linear-gradient(135deg, #FF9900 0%, #FF7700 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(255, 153, 0, 0.2);
+  min-width: 160px;
+}
+
+.amazon-btn:hover {
+  background: linear-gradient(135deg, #FF7700 0%, #FF5500 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 153, 0, 0.3);
+  color: white;
+  text-decoration: none;
+}
+
+.amazon-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(255, 153, 0, 0.2);
+}
+
+/* Inline Amazon button for blog posts */
+.amazon-btn-inline {
+  background: linear-gradient(135deg, #FF9900 0%, #FF7700 100%);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(255, 153, 0, 0.2);
+  font-size: 0.875rem;
+  margin: 0.5rem 0;
+}
+
+.amazon-btn-inline:hover {
+  background: linear-gradient(135deg, #FF7700 0%, #FF5500 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 153, 0, 0.3);
+  color: white;
+  text-decoration: none;
+}
+
+/* Search highlight */
+.search-highlight {
+  @apply bg-yellow-200 px-1 rounded;
+}

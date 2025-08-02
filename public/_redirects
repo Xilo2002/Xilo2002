@@ -1,0 +1,16 @@
+# Netlify redirects file
+
+# Admin panel - ensure admin routes work properly
+/admin/*    /admin/index.html   200
+
+# API routes for Netlify Functions
+/api/*      /.netlify/functions/:splat  200
+
+# Blog post redirects (if needed)
+/blog/*     /blog/:splat        200
+
+# Category redirects
+/categories/*  /categories/:splat  200
+
+# Catch-all redirect to index.html for SPA routing (must be last)
+/*          /index.html         200

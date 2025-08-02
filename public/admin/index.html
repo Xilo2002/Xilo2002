@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager | Blicksel Picks</title>
+  
+</head>
+<body>
+  <!-- Include the script that builds the page and powers Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  
+  <!-- Custom preview templates -->
+  <script>
+    // Custom preview template for blog posts
+    const PostPreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        const image = entry.getIn(['data', 'image']);
+        const body = this.props.widgetFor('body');
+        
+        return h('div', { className: 'preview-container' },
+          h('div', { className: 'preview-header' },
+            h('h1', { className: 'preview-title' }, entry.getIn(['data', 'title'])),
+            h('p', { className: 'preview-description' }, entry.getIn(['data', 'description'])),
+            image && h('img', { 
+              src: this.props.getAsset(image).toString(),
+              alt: entry.getIn(['data', 'title']),
+              className: 'preview-image'
+            })
+          ),
+          h('div', { className: 'preview-content' }, body)
+        );
+      }
+    });
+
+    // Register the preview template
+    CMS.registerPreviewTemplate('blog', PostPreview);
+    
+    // Custom preview styles
+    CMS.registerPreviewStyle('/admin/preview.css');
+  </script>
+</body>
+</html>

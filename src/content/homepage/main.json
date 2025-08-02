@@ -1,0 +1,117 @@
+{
+  "hero": {
+    "title": "Find the Best Amazon Products",
+    "subtitle": "Honest reviews, detailed comparisons, and expert recommendations to help you make informed purchasing decisions. Save time and money with our curated picks.",
+    "primaryCta": {
+      "text": "Browse Reviews",
+      "url": "/blog"
+    },
+    "secondaryCta": {
+      "text": "Shop by Category",
+      "url": "/categories"
+    }
+  },
+  "featuredProduct": {
+    "badge": "PICK OF THE WEEK",
+    "badgeIcon": "lightning",
+    "title": "Apple AirPods Pro (2nd Gen)",
+    "subtitle": "Now 25% Off - Limited Time!",
+    "description": "Our top-rated wireless earbuds with active noise cancellation",
+    "ctaText": "Get This Deal",
+    "ctaUrl": "https://www.amazon.com/dp/B0BDHWDR12",
+    "price": "$179.99"
+  },
+  "categories": [
+    {
+      "name": "Electronics",
+      "icon": "smartphone",
+      "count": 45,
+      "colorClass": "bg-blue-100 text-blue-800",
+      "description": "Smartphones, laptops, tablets, and cutting-edge tech gadgets"
+    },
+    {
+      "name": "Home Garden",
+      "icon": "home",
+      "count": 32,
+      "colorClass": "bg-green-100 text-green-800",
+      "description": "Gardening tools, outdoor furniture, and landscaping equipment"
+    },
+    {
+      "name": "Smart Home",
+      "icon": "home",
+      "count": 38,
+      "colorClass": "bg-blue-100 text-blue-800",
+      "description": "Voice assistants, smart lights, security systems, and automation"
+    },
+    {
+      "name": "Kitchen",
+      "icon": "utensils",
+      "count": 28,
+      "colorClass": "bg-red-100 text-red-800",
+      "description": "Appliances, gadgets, cookware, and kitchen essentials"
+    },
+    {
+      "name": "Health & Fitness",
+      "icon": "heart",
+      "count": 24,
+      "colorClass": "bg-purple-100 text-purple-800",
+      "description": "Fitness trackers, workout equipment, and wellness products"
+    },
+    {
+      "name": "Beauty",
+      "icon": "palette",
+      "count": 19,
+      "colorClass": "bg-pink-100 text-pink-800",
+      "description": "Skincare, makeup, hair care, and beauty tools"
+    },
+    {
+      "name": "Sports",
+      "icon": "trophy",
+      "count": 16,
+      "colorClass": "bg-orange-100 text-orange-800",
+      "description": "Sports equipment, outdoor gear, and athletic accessories"
+    }
+  ],
+  "whyChooseUs": [
+    {
+      "title": "Honest Reviews",
+      "description": "We test products thoroughly and provide unbiased, honest reviews based on real-world usage.",
+      "icon": "heart",
+      "colorClass": "bg-primary-100"
+    },
+    {
+      "title": "Quick Updates",
+      "description": "Stay informed with the latest product releases, deals, and market trends updated daily.",
+      "icon": "lightning",
+      "colorClass": "bg-accent-100"
+    },
+    {
+      "title": "Money-Saving Tips",
+      "description": "Find the best deals, discover budget alternatives, and learn how to get the most value for your money.",
+      "icon": "trophy",
+      "colorClass": "bg-green-100"
+    }
+  ],
+  "stats": [
+    {
+      "number": "500+",
+      "label": "Products Reviewed",
+      "icon": "star"
+    },
+    {
+      "number": "50+",
+      "label": "Categories",
+      "icon": "chart"
+    },
+    {
+      "number": "10K+",
+      "label": "Happy Readers",
+      "icon": "users"
+    },
+    {
+      "number": "4.9★",
+      "label": "Average Rating",
+      "icon": "trending"
+    }
+  ]
+}

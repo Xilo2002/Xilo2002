@@ -1,0 +1,92 @@
+---
+export interface Props {
+  url: string;
+  text?: string;
+  className?: string;
+}
+
+const { url, text = "Buy on Amazon", className = "" } = Astro.props;
+
+// Add affiliate tag if it's an Amazon URL and doesn't already have one
+const affiliateUrl = url.includes('amazon.com') && !url.includes('tag=')
+  ? `${url}${url.includes('?') ? '&' : '?'}tag=blickselp-20`
+  : url;
+---
+
+<div class={`amazon-cta-container ${className}`}>
+  <a 
+    href={affiliateUrl}
+    target="_blank"
+    rel="noopener nofollow sponsored"
+    class="amazon-cta-button"
+    aria-label={`${text} - Opens in new tab`}
+  >
+    <svg class="amazon-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 8.206 3.183 13.697 3.183 4.674 0 8.955-1.004 12.844-3.008.187-.093.348-.053.484.124.045.062.009.152-.1.205-4.33 2.395-9.037 3.589-14.123 3.589-5.849 0-11.312-1.596-15.612-4.787-.121-.09-.16-.18-.538-.284zm1.757-2.03c-.138-.32.024-.73.36-.91 7.365-4.05 19.35-4.05 26.716 0 .335.18.497.59.36.91-.046.108-.194.126-.33.04-6.698-4.244-17.134-4.244-23.832 0-.136.086-.284.068-.33-.04z"/>
+    </svg>
+    <span>{text}</span>
+    <svg class="external-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+    </svg>
+  </a>
+</div>
+
+<style>
+  .amazon-cta-container {
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .amazon-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: #FF9900;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.75rem; /* rounded-xl */
+    font-weight: 600;
+    font-size: 1.125rem; /* text-lg */
+    font-family: 'Inter', system-ui, sans-serif;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    min-width: 200px;
+    justify-content: center;
+  }
+
+  .amazon-cta-button:hover {
+    background: #E68900;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    color: white;
+    text-decoration: none;
+  }
+
+  .amazon-cta-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .amazon-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .external-icon {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .amazon-cta-button {
+      padding: 0.875rem 1.5rem;
+      font-size: 1rem;
+      min-width: 180px;
+    }
+  }
+</style>
+</invoke>

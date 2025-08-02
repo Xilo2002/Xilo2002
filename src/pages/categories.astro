@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import DynamicIcon from '../components/DynamicIcon.astro';
+import { getCollection } from 'astro:content';
+
+// Get all categories from CMS
+const categories = await getCollection('categories');
+---
+
+<BaseLayout
+  title="Product Categories - Shop by Category | Blicksel Picks"
+  description="Browse our product categories to find the best Amazon deals and reviews. From electronics to home goods, discover curated recommendations."
+>
+  <Header />
+  
+  <main class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Shop by Category
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            Discover the best Amazon products organized by category. Each section features 
+            our top picks, detailed reviews, and expert recommendations.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Categories Grid -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {categories.map(category => (
+            <div class="card group hover:scale-105 transform transition-all duration-300">
+              <div class="p-8 text-center">
+                <div class="flex justify-center mb-6">
+                  <DynamicIcon 
+                    name={category.data.icon} 
+                    class="w-16 h-16 text-gray-600" 
+                  />
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">{category.data.title}</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">{category.data.description}</p>
+                <div class="mb-6">
+                  <span class={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${category.data.colorClass}`}>
+                    {category.data.productCount} products reviewed
+                  </span>
+                </div>
+                <a 
+                  href={`/categories/${category.data.slug}`}
+                  class="btn-primary w-full"
+                >
+                  Browse {category.data.title}
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Featured Categories -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Popular This Month</h2>
+          <p class="text-lg text-gray-600">Most searched and reviewed categories</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {categories.filter(cat => cat.data.featured).slice(0, 3).map(category => (
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-8 text-center">
+              <div class="flex justify-center mb-4">
+                <DynamicIcon name={category.data.icon} class="w-10 h-10 text-blue-600" />
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">{category.data.title}</h3>
+              <p class="text-gray-600 mb-4">{category.data.description.substring(0, 60)}...</p>
+              <a href={`/categories/${category.data.slug}`} class="text-primary-600 hover:text-primary-700 font-medium">
+                View {category.data.title} →
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</BaseLayout>

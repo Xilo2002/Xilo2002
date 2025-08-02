@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pages = [
+  { title: "Home", url: "/", description: "Homepage with featured products and latest reviews" },
+  { title: "Blog", url: "/blog", description: "Latest product reviews and buying guides" },
+  { title: "Categories", url: "/categories", description: "Browse products by category" },
+  { title: "Reviews", url: "/reviews", description: "Detailed product reviews and comparisons" },
+  { title: "About", url: "/about", description: "Learn about Blicksel Picks and our team" },
+  { title: "Contact", url: "/contact", description: "Get in touch with our team" }
+];
+
+const legalPages = [
+  { title: "Privacy Policy", url: "/privacy-policy", description: "How we handle your personal information" },
+  { title: "Affiliate Disclosure", url: "/affiliate-disclosure", description: "Our affiliate relationships and earnings" },
+  { title: "Terms of Service", url: "/terms-of-service", description: "Terms and conditions for using our website" }
+];
+
+const categories = [
+  "Electronics", "Smart Home", "Kitchen", "Health & Fitness", 
+  "Beauty", "Sports", "Gaming", "Home & Garden"
+];
+---
+
+<BaseLayout
+  title="Sitemap - All Pages | Blicksel Picks"
+  description="Browse all pages on Blicksel Picks. Find product reviews, categories, and helpful information easily."
+>
+  <Header />
+  
+  <main class="min-h-screen bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="bg-white rounded-lg shadow-sm p-8 md:p-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-8">Sitemap</h1>
+        
+        <div class="prose prose-lg max-w-none">
+          <p class="text-xl text-gray-600 mb-8">
+            Find all the pages and content on Blicksel Picks. Use this sitemap to navigate our website 
+            or discover new content you might have missed.
+          </p>
+          
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-6 mb-8">
+            <h2 class="text-lg font-semibold text-blue-900 mb-2">XML Sitemap</h2>
+            <p class="text-blue-800 mb-2">
+              For search engines and automated tools, visit our XML sitemap:
+            </p>
+            <a href="/sitemap-index.xml" class="text-blue-600 hover:text-blue-700 font-medium">
+              /sitemap-index.xml
+            </a>
+          </div>
+          
+          <h2>Main Pages</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            {pages.map(page => (
+              <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                  <a href={page.url} class="text-primary-600 hover:text-primary-700">
+                    {page.title}
+                  </a>
+                </h3>
+                <p class="text-gray-600 text-sm mb-2">{page.description}</p>
+                <code class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                  {page.url}
+                </code>
+              </div>
+            ))}
+          </div>
+          
+          <h2>Product Categories</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            {categories.map(category => (
+              <div class="text-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                <a 
+                  href={`/categories/${category.toLowerCase().replace(/\s+/g, '-')}`}
+                  class="text-primary-600 hover:text-primary-700 font-medium"
+                >
+                  {category}
+                </a>
+              </div>
+            ))}
+          </div>
+          
+          <h2>Legal & Information</h2>
+          <div class="space-y-4 mb-8">
+            {legalPages.map(page => (
+              <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                  <a href={page.url} class="text-primary-600 hover:text-primary-700">
+                    {page.title}
+                  </a>
+                </h3>
+                <p class="text-gray-600 text-sm mb-2">{page.description}</p>
+                <code class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                  {page.url}
+                </code>
+              </div>
+            ))}
+          </div>
+          
+          <h2>Recent Blog Posts</h2>
+          <p class="text-gray-600 mb-4">
+            Visit our <a href="/blog" class="text-primary-600 hover:text-primary-700">blog page</a> 
+            to see all our latest product reviews and buying guides.
+          </p>
+          
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Can't Find What You're Looking For?</h3>
+            <p class="text-gray-600 mb-4">
+              Use our search function or contact us directly. We're always happy to help you find the information you need.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="/contact" class="btn-primary text-center">
+                Contact Us
+              </a>
+              <a href="/blog" class="btn-accent text-center">
+                Browse All Reviews
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</BaseLayout>

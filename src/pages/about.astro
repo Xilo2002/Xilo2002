@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="About Blicksel Picks - Your Trusted Product Review Source"
+  description="Learn about Blicksel Picks, our mission to provide honest Amazon product reviews, and meet our team of expert reviewers."
+>
+  <Header />
+  
+  <main class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-white shadow-sm">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            About Blicksel Picks
+          </h1>
+          <p class="text-xl text-gray-600 leading-relaxed">
+            Your trusted source for honest, comprehensive Amazon product reviews and buying guides.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Main Content -->
+    <section class="py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-lg shadow-sm p-8 md:p-12 mb-12">
+          <div class="prose prose-lg max-w-none">
+            <h2>Our Mission</h2>
+            <p class="text-lg text-gray-600 leading-relaxed">
+              At Blicksel Picks, we believe that making informed purchasing decisions shouldn't be overwhelming. 
+              With thousands of products available on Amazon, finding the right one can be challenging. 
+              That's where we come in.
+            </p>
+            
+            <p>
+              Our mission is simple: to provide honest, detailed, and unbiased reviews of Amazon products 
+              across various categories. We test products thoroughly, research extensively, and present our 
+              findings in an easy-to-understand format that helps you make confident purchasing decisions.
+            </p>
+            
+            <h2>What Makes Us Different</h2>
+            <ul>
+              <li><strong>Real Testing:</strong> We actually purchase and test the products we review, not just rely on manufacturer specifications.</li>
+              <li><strong>Unbiased Reviews:</strong> Our reviews are honest and transparent, highlighting both pros and cons of each product.</li>
+              <li><strong>Comprehensive Analysis:</strong> We consider factors like value for money, build quality, user experience, and long-term durability.</li>
+              <li><strong>Regular Updates:</strong> We update our reviews when products change or when better alternatives become available.</li>
+              <li><strong>Community Focus:</strong> We listen to our readers' feedback and review requests to ensure we're covering products you care about.</li>
+            </ul>
+            
+            <h2>Our Review Process</h2>
+            <p>
+              Every product we review goes through a rigorous evaluation process:
+            </p>
+            
+            <ol>
+              <li><strong>Research:</strong> We research the product category, compare specifications, and identify key features to evaluate.</li>
+              <li><strong>Purchase & Testing:</strong> We buy the product at full price and test it in real-world conditions for several weeks.</li>
+              <li><strong>Comparison:</strong> We compare the product against similar options in the same category and price range.</li>
+              <li><strong>Analysis:</strong> We analyze performance, build quality, value proposition, and user experience.</li>
+              <li><strong>Review Writing:</strong> We write comprehensive reviews that highlight strengths, weaknesses, and our overall recommendation.</li>
+            </ol>
+            
+            <h2>Categories We Cover</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 my-8">
+              <div class="bg-gray-50 p-4 rounded-lg text-center">
+                <div class="flex justify-center mb-2">
+                  <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <div class="font-medium">Electronics</div>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-lg text-center">
+                <div class="flex justify-center mb-2">
+                  <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                  </svg>
+                </div>
+                <div class="font-medium">Home & Garden</div>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-lg text-center">
+                <div class="flex justify-center mb-2">
+                  <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+                  </svg>
+                </div>
+                <div class="font-medium">Kitchen</div>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-lg text-center">
+                <div class="flex justify-center mb-2">
+                  <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                  </svg>
+                </div>
+                <div class="font-medium">Health & Fitness</div>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-lg text-center">
+                <div class="flex justify-center mb-2">
+                  <DynamicIcon name="palette" class="w-8 h-8 text-gray-600" />
+                </div>
+                <div class="font-medium">Beauty</div>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-lg text-center">
+                <div class="flex justify-center mb-2">
+                  <DynamicIcon name="trophy" class="w-8 h-8 text-gray-600" />
+                </div>
+                <div class="font-medium">Sports</div>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-lg text-center">
+                <div class="flex justify-center mb-2">
+                  <DynamicIcon name="gamepad" class="w-8 h-8 text-gray-600" />
+                </div>
+                <div class="font-medium">Gaming</div>
+              </div>
+            </div>
+            
+            <h2>Our Commitment to Transparency</h2>
+            <p>
+              We believe in complete transparency with our readers:
+            </p>
+            
+            <ul>
+              <li><strong>Affiliate Disclosure:</strong> We are participants in the Amazon Services LLC Associates Program. When you make a purchase through our affiliate links, we earn a small commission at no additional cost to you.</li>
+              <li><strong>Editorial Independence:</strong> Our affiliate partnerships do not influence our review process or recommendations. We only recommend products we genuinely believe in.</li>
+              <li><strong>Honest Opinions:</strong> We share our genuine opinions and experiences, even if it means recommending against expensive products.</li>
+              <li><strong>Update Policy:</strong> We regularly update our reviews and buying guides to reflect changes in product availability, pricing, and new alternatives.</li>
+            </ul>
+            
+            <h2>Contact Us</h2>
+            <p>
+              Have a product you'd like us to review? Found an error in one of our reviews? 
+              We'd love to hear from you! Visit our <a href="/contact" class="text-primary-600 hover:text-primary-700">contact page</a> 
+              to get in touch.
+            </p>
+            
+            <p>
+              You can also follow us on social media for the latest updates, deal alerts, and behind-the-scenes content.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Team Section -->
+        <div class="bg-white rounded-lg shadow-sm p-8 md:p-12">
+          <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Meet Our Team</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="text-center">
+              <div class="w-32 h-32 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-white font-bold text-3xl">JS</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">John Smith</h3>
+              <p class="text-primary-600 mb-3">Founder & Chief Editor</p>
+              <p class="text-gray-600">
+                With over 10 years of experience in product testing and consumer electronics, 
+                John founded Blicksel Picks to help consumers make better purchasing decisions.
+              </p>
+            </div>
+            
+            <div class="text-center">
+              <div class="w-32 h-32 bg-gradient-to-br from-accent-500 to-primary-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-white font-bold text-3xl">MR</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Maria Rodriguez</h3>
+              <p class="text-primary-600 mb-3">Senior Product Reviewer</p>
+              <p class="text-gray-600">
+                Maria specializes in home and kitchen products. Her attention to detail and 
+                practical testing approach helps readers find products that truly work.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</BaseLayout>
