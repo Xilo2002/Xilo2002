@@ -68,7 +68,7 @@ const schemaMarkup = {
           <span>/</span>
           <a href="/reviews" class="hover:text-primary-600">Reviews</a>
           <span>/</span>
-          <a href={`/categories/${entry.data.category.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '').replace(/\s/g, '')}`} class="hover:text-primary-600">{entry.data.category}</a>
+          <a href={`/categories/${entry.data.category.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`} class="hover:text-primary-600">{entry.data.category}</a>
           <span>/</span>
           <span class="text-gray-900">{entry.data.title}</span>
         </nav>

@@ -73,7 +73,7 @@ const categories = [
             {categories.map(category => (
               <div class="text-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
                 <a 
-                  href={`/categories/${category.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`/categories/${category.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`}
                   class="text-primary-600 hover:text-primary-700 font-medium"
                 >
                   {category}

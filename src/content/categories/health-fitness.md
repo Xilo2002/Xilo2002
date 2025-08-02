@@ -1,6 +1,6 @@
 ---
 title: "Health & Fitness"
-slug: "health-fitness"
+slug: "health-and-fitness"
 description: "Achieve your wellness goals with our reviews of fitness trackers, workout equipment, and health monitoring devices."
 icon: "heart"
 colorClass: "bg-purple-100 text-purple-800"

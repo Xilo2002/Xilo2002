@@ -174,7 +174,7 @@ const featuredPosts = [
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {categories.map(category => (
             <a 
-              href={`/categories/${category.name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '').replace(/\s/g, '')}`}
+              href={`/categories/${category.name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`}
               class="card text-center p-8 hover:scale-105 hover:shadow-xl transform transition-all duration-300"
             >
               <div class="flex justify-center mb-4">
